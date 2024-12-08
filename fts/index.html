@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandals</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ruge+Boogie&display=swap" rel="stylesheet">
+    <style>
+        body{
+            background: url("https://images.pexels.com/photos/172276/pexels-photo-172276.jpeg?cs=srgb&dl=pexels-fwstudio-33348-172276.jpg&fm=jpg");
+            text-align: right;
+            font-family: "Ruge Boogie", cursive;
+            font-weight: 400;
+            font-style: normal;
+            color: whitesmoke;
+        }
+        .main_content_view
+        {
+            text-align: center;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            font-size: 3vmin;
+            padding: 10px 10px 10px 10px;
+            backdrop-filter: blur(5px);
+        }
+        .main_content_view > div{
+            border: slategray solid 2px;
+        }
+        h1{
+            font-size: 4vmin;
+        }
+        h3{
+            font-size: 3vmin;
+        }
+        .find_osama {
+            text-align: left;
+            font-family: Arial, Helvetica, sans-serif;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            background-color: white;
+            color: white;
+            padding: 5px 5px 5px 5px;
+            margin: 0px 0px 0px 0px;
+            border: solid black 2px;
+        }
+        .find_osama > .tit {
+            margin: 0px 0px 0px 0px;
+            padding: 3px 3px 3px 2px;
+            margin: 0px 0px 5px 0px;
+            background-color: #57a6eb;
+        }
+        .find_osama > .bot {
+            padding: 3px 3px 3px 2px;
+            margin: 0px 0px 5px 0px;
+            background-color: white;
+            display: flex;
+            justify-content: right;
+        }
+        .find_osama > .bot > button {
+            background-color: #57a6eb;
+            color: white;
+            font-weight: bolder;
+            border: none;
+            padding: 10px 10px 10px 10px;
+            font-size: large;
+            cursor: grab;
+        }
+        .captcha_imagegrid {
+            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            margin: 5px 5px 5px 5px;
+            width: 20vw;
+        }
+        .captcha_imagegrid > img {
+            margin: 3px 3px 3px 3px;
+            width: calc(calc(20vw / 4) - 3px);
+            height: calc(calc(20vw / 4) - 3px);;
+        }
+        .osama_hide{
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            opacity: 0.8;
+            backdrop-filter: blur(50px);
+            background-color: white;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Using flamethrowers in Sandals</h1>
+    <h3>OSHA training set</h3>
+    <div class="main_content_view">
+        <div>
+            <img src="1.jpg" alt="">
+            <p>Man with disfigured face using a Flamethrower while in Sandals</p>
+        </div>
+        <div>
+            <img src="2.jpg" alt="">
+            <p>Asian using a Flamethrower</p>
+        </div>
+        <div>
+            <img src="3.jpg" alt="">
+            <p>The same asian from the previous photo (We didn't have enough money for more Poeple)</p>
+        </div>
+        <div>
+            <img src="4.jpg" alt="">
+            <p>Man burning his hand while using a Flamethrower (Not regular operating practice)</p>
+        </div>
+        <div>
+            <img src="5.jpg" alt="">
+            <p>Flamethrower using man</p>
+        </div>
+        <div>
+            <img src="6.jpg" alt="">
+            <p>Man trying to Turn of the Flamethrower with Finger (Not recommended practice)</p>
+        </div>
+        <div>
+            <img src="7.jpg" alt="">
+            <p>FLAMME is german for flame</p>
+        </div>
+        <div>
+            <img src="8.jpg" alt="">
+            <p>Male human emptying his lava bucket</p>
+        </div>
+        <div>
+            <img src="9.jpg" alt="">
+            <p>Fire</p>
+        </div>
+        <div>
+            <img src="10.jpg" alt="">
+            <p>Man with gay flamethrower</p>
+        </div>
+        <div>
+            <img src="11.jpg" alt="">
+            <p>WTF is going on</p>
+        </div>
+        <div>
+            <img src="12.jpg" alt="">
+            <p>Man with oversized fuse going to his backpack</p>
+        </div>
+    </div>
+    <div class="osama_hide">
+
+    </div>
+    <div class="find_osama">
+        <div class="tit">
+            <h4>Select all images with a</h4>
+            <h2>Osama Bin Laden</h2>
+            <h4>Click verify once there are none left.</h4>
+        </div>
+        <div class="captcha_imagegrid">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+        </div>
+        <div class="bot">
+            <button>VERIFY</button>
+        </div>
+    </div>
+    <script>
+        let i = 0;
+        let nimg = (elem) => {
+            if(Math.random() > 0.3)
+        {
+            elem.src = "https://picsum.photos/50/50?random="+i;
+        }else{
+            let chosen_osama = osamas[Math.floor(Math.random()*osamas.length)];
+            elem.src = "osama/"+chosen_osama;
+        }
+            
+            i++;
+        };
+        let rsimg = () => {
+            document.querySelectorAll(".captcha_imagegrid img").forEach(elem=>{
+            nimg(elem);
+        });
+        };
+        let osamas = ["1.png","2.png","3.png","4.png"];
+        document.querySelectorAll(".captcha_imagegrid img").forEach(elem=>{
+            nimg(elem);
+            elem.addEventListener("click",(evt)=>{
+                nimg(evt.target);
+            });
+        });
+        document.querySelector(".bot button").addEventListener("click",()=>{
+            let anyf = 0;
+            document.querySelectorAll(".captcha_imagegrid img").forEach(elem=>{
+                if(elem.src.includes("osama"))
+            {
+                anyf++;
+            }
+            });
+            if(anyf > 0){
+                rsimg();
+                alert("Try again");
+            }else{
+                document.querySelector(".osama_hide").style.display = "none";
+                document.querySelector(".find_osama").style.display = "none";
+            }
+            
+        });
+    </script>
+</body>
+</html>

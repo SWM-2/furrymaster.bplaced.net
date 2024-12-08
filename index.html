@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="index.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="main_content">
+    <input type="checkbox" class="transformation"/>
+    <button id="dm">Dev mode, DO NOT PRESS</button>
+    <div class="menucontainer">
+
+        <h1>Select the Website</h1>
+        <ul>
+            <input type="checkbox" id="cb0"/>
+            <input type="checkbox" id="cb1"/>
+            <input type="checkbox" id="cb2"/>
+            <input type="checkbox" id="cb3"/>
+            <input type="checkbox" id="cb4"/>
+            <input type="checkbox" id="cb5"/>
+            <input type="checkbox" id="cb6"/>
+            <br>
+             <input type="checkbox" id="cb7"/>
+            <input type="checkbox" id="cb8"/>
+            <input type="checkbox" id="cb9"/>
+            <input type="checkbox" id="cb10"/>
+            <input type="checkbox" id="cb11"/>
+            <input type="checkbox" id="cb12"/>
+            <input type="checkbox" id="cb13"/>
+            <br>
+             <input type="checkbox" id="cb14"/>
+            <input type="checkbox" id="cb15"/>
+            <input type="checkbox" id="cb16"/>
+            <input type="checkbox" id="cb17"/>
+            <input type="checkbox" id="cb18"/>
+            <input type="checkbox" id="cb19"/>
+            <input type="checkbox" id="cb20"/>
+
+            <br>
+            <br>
+
+            <li><a href="stats.html">Stats</a></li>
+            <li><a href="nineeleven">9/11</a></li>
+            <li><a href="https://www.youtube.com/@Shijiefengqing">YouTube</a></li>
+            <li><a href="drawing_program">Drawing Program</a></li>
+            <li><a href="fts">Flamethrowers & Sandals</a></li>
+            <li><a href="corndog">Corndog</a></li>
+        </ul>
+    </div>
+    <div class="commentbox">
+            <div class="cmentry">
+                <h1>Comments</h1>
+                <h2>Write one</h2>
+                <input type="email" id="email" placeholder="email"/>
+                <br>
+                <textarea id="tarea"></textarea>
+                <br>
+                <button id="cmnt">Leave Comment</button>
+                <br>
+                <h2>Read them</h2>
+                <div id="cmdata">
+                </div>
+            </div>
+
+        </div>
+    <img style="height: 15vmin;" src="https://repository-images.githubusercontent.com/344653306/e76e2176-800f-456d-be07-93e8f3da59d8" alt="">
+    <script>
+        document.getElementById("dm").addEventListener("click",()=>{
+            fetch("http://furrymaster.bplaced.net/gcmt.php?dev=true").then(e=>{
+            e.text().then(t=>{
+                document.getElementById("cmdata").innerHTML = t;
+            });
+        });
+        });
+        fetch("http://furrymaster.bplaced.net/gcmt.php").then(e=>{
+            e.text().then(t=>{
+                document.getElementById("cmdata").innerHTML = t;
+            });
+        });
+
+        document.getElementById("cmnt").addEventListener("click",()=>{
+            let tarea = document.getElementById("tarea");
+            let emare = document.getElementById("email");
+            fetch("lvcmt.php?content="+btoa(tarea.value)+"&eml="+btoa(emare.value));
+            tarea.value = "";
+            emare.value = "";
+            alert("Verify Email");
+        });
+
+        let load = () => {fetch("cboxrd.php").then(resp => {
+            resp.json().then(j => {
+                let deeta = j.data;
+                for(let i = 0;i < deeta.length;i++)
+                {
+                    let element = deeta[i];
+                    if(element.id != -1)
+                        document.getElementById("cb"+element.id).checked = element.state > 0;
+                }
+            });
+        });
+        setTimeout(load,500);
+        }
+
+        setTimeout(load,500);
+
+        for(let i = 0;i < 21;i++)
+        {
+            document.getElementById("cb"+i).addEventListener("click",(e)=>{
+                fetch("checkbox.php?id="+i+"&state="+e.target.checked);
+            });
+        }
+    </script>
+    </div>
+</body>
+</html>

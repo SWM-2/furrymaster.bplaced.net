@@ -1,0 +1,15 @@
+<html>
+    <body>
+        <h1>Your email</h1>
+        <script>
+            function snd()
+            {
+                fetch("applycmnt.php?eml="+btoa(document.getElementById("emll").value)).then(e=>{
+                    window.location.href = "index.html";
+                });
+            }
+        </script>
+        <input type="text" placeholder="Your Email" id="emll"/>
+        <button onclick="snd()">Send</button>
+    </body>
+</html>

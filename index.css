@@ -1,0 +1,128 @@
+body{
+    background-color: #101010;
+}
+
+@font-face {
+    font-family: "biosfont";
+    src: url("Web437_DTK_BIOS.woff") format('woff');
+  }
+  
+.main_content
+{
+    transition: 2s;
+}
+
+.main_content : has(.transformation:checked)
+{
+    transform: rotate(90deg);
+}
+
+.menucontainer
+{
+    font-family: "biosfont";
+    color: white;
+    outline: solid 2px white;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translate(0%,-50%);
+    padding: 0px 0px 0px 0px;
+    width: 50%;
+    height: 50%;
+    padding: 0px 0px 0px 0px;
+}
+h1{
+    font-size: 2vmin;
+    color: black;
+    background-color: white;
+    margin: 0px 0px 0px 0px;
+}
+h2{
+    color: white;
+}
+
+li{
+    list-style-type: none;
+    width: 100%;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    color:white;
+}
+
+a{
+    font-size: 2vmin;
+    text-decoration: none;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    color: white;
+}
+
+a:active{
+    color: white;
+}
+a:hover{
+    background-color: white;
+    color: black;
+}
+
+li:has(a:hover){
+    background-color: white;
+    color: black;
+}
+
+.commentbox div {
+    color:white;
+}
+
+#dm
+{
+    background-color: black;
+    border: 2px solid white;
+    color: red;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+}
+
+.cmentry{
+    border: solid 2px white;
+}
+
+.cmentry input{
+    border: 2px white solid;
+    background-color: black;
+    color: white;
+    font-family: "biosfont";
+    width: 30vw;
+}
+
+.cmentry textarea{
+    border: 2px white solid;
+    background-color: black;
+    color: white;
+    font-family: "biosfont";
+    width: 30vw;
+    height: 10vh;
+}
+
+#cmdata{
+
+
+}
+
+#cmdata li{
+    text-wrap: balance wrap;
+    max-width: 30vw;
+    border: 1px solid gray;
+    padding: 5px 5px 5px 5px;
+}
+
+.commentbox{
+    font-family: "biosfont";
+    position: fixed;
+    right: 10px;
+    top: 50%;
+    transform: translate(0%,-50%);
+    color: white;
+    text-align: right;
+}

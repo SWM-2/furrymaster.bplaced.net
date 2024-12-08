@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+    <style>
+        body{
+            background-color: gainsboro;
+        }
+        #corndog{
+            position: fixed;
+            bottom: 10vh;
+            left: 0px;
+            width: 10vmin;
+            height: 10vmin;
+            user-select: none;
+        }
+        #target{
+            position: fixed;
+            bottom: 10vh;
+            left: 0px;
+            width: 10vmin;
+            height: 10vmin;
+            user-select: none;
+        }
+        .base{
+            background-color: aquamarine;
+            height: 10vmin;
+            position: fixed;
+            bottom: 0px;
+            left: 0px;
+            width: 100vw;
+        }
+    </style>
+    <script>
+        function fren() {
+
+        }
+        document.addEventListener("DOMContentLoaded",()=>{
+            let cd = document.getElementById("corndog");
+            let tgt = document.getElementById("target");
+            let dr = document.getElementById("dragline");
+            let remcorn = 10;
+            let tohit = (window.innerWidth/2);
+            let pts = 0;
+            cd.momentumX = 0;
+            cd.momentumY = 0;
+            cd.unlocked = false;
+            cd.posX = 0;
+            cd.posY = 0;
+            let setDragLine = (ax,ay,bx,by) => {
+                dr.setAttribute("x1",ax);
+                dr.setAttribute("x2",bx);
+                dr.setAttribute("y1",ay);
+                dr.setAttribute("y2",by);
+            };
+
+            let mouse_on_corn_dog = false;
+            cd.addEventListener("drag",(e)=>{e.preventDefault();});
+            cd.addEventListener("mousedown",(e)=>{
+                e.preventDefault();
+                console.log("Cordnog");
+                mouse_on_corn_dog = true;
+            });
+            window.addEventListener("mouseup",(e)=>{
+                if(mouse_on_corn_dog){
+                    mouse_on_corn_dog = false;
+                    let corndog_bounds = cd.getBoundingClientRect();
+                    let centreX = corndog_bounds.x + (corndog_bounds.width/2);
+                    let centreY = corndog_bounds.y + (corndog_bounds.height/2);
+                    let offX = centreX - e.clientX;
+                    let offY = centreY - e.clientY;
+                    cd.momentumX = (offX/window.innerWidth)*170;
+                    cd.momentumY = -(offY/window.innerHeight)*170;
+                    cd.unlocked = true;
+                    setDragLine(0,0,0,0);
+                }
+            });
+            window.addEventListener("mousemove",(e)=>{
+                if(mouse_on_corn_dog)
+                {
+                    let corndog_bounds = cd.getBoundingClientRect();
+                    let centreX = corndog_bounds.x + (corndog_bounds.width/2);
+                    let centreY = corndog_bounds.y + (corndog_bounds.height/2);
+                    setDragLine(centreX,centreY,e.clientX,e.clientY);
+                }
+            });
+            let calc_pos = () => {
+                cd.posX += cd.momentumX;
+                cd.posY += cd.momentumY;
+                
+                if(cd.posY < 0)
+                {
+                    cd.momentumX = 0;
+                    cd.momentumY = 0;
+                    cd.unlocked = false;
+                    cd.posY = 0;
+                    remcorn-=1;
+                    
+                    let delta = Math.abs(tohit-cd.posX);
+                    delta /= window.innerWidth;
+                    delta *= 400;
+                    cd.posX = 0;
+                    pts += Math.max(0,100-delta);
+                    document.getElementById("rem").innerText = `${remcorn} Corndog remaining`;
+                    document.getElementById("pts").innerText = `${Math.floor(pts)} pojnts`;
+                }else{
+                    if(cd.unlocked){
+                    cd.momentumY -= window.innerHeight/1500;
+                    }
+                }
+                cd.style.left = "calc(20vh + "+cd.posX+"px)";
+                cd.style.bottom = "calc(10vh + "+cd.posY+"px)";
+                setTimeout(calc_pos,10);
+            };
+            calc_pos();
+            tgt.style.left = "calc(20vh + "+(window.innerWidth/2)+"px)";
+            tgt.style.bottom = "calc(10vh + "+0+"px)";
+        });
+    </script>
+</head>
+<body>
+    <h1>Tutoril</h1>
+    <h4>Drag mouse from corndog to make line and make jump into thing</h4>
+    <h1 id="rem">10 Corndog remaining</h1>
+    <h1 id="pts">0 pojnts</h1>
+    <img src="corndog.png" alt="" id="corndog"/>
+    <img src="Untitled.png" alt="" id="target">
+    <div class="base">
+
+    </div>
+    <svg style="position: fixed;left:0px;top:0px;width:100vw;height:100vh;pointer-events:none;">
+        <line id="dragline" x1="0" x2="0" y1="0" y2="0" stroke="white"/>
+    </svg>
+</body>
+</html>

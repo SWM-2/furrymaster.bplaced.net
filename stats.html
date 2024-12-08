@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="index.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="menucontainer" id="stats_container">
+        <h1>Stats</h1>
+    </div>
+    <script>
+        function reqst(){
+            console.log("Sending request");
+            fetch("http://furrymaster.bplaced.net/get_stats.php").then((resp)=>{
+                console.log(resp);
+                resp.text().then((txt)=>{
+                    console.log(txt);
+                    document.getElementById("stats_container").innerHTML = "<h1>Stats</h1>"+txt;
+                });
+            });
+            setTimeout(reqst,2000);
+        }
+    document.addEventListener("DOMContentLoaded",reqst);
+    </script>
+</body>
+</html>

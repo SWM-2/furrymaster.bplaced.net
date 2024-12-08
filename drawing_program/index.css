@@ -1,0 +1,52 @@
+.mainView{
+    position: absolute;
+    left: 0px;
+    top: 10vh;
+    width: 100vw;
+    height: 90vh;
+    background-color: whitesmoke;
+}
+
+body{
+    font-family: monospace;
+}
+
+.toolbox{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    outline: slategray solid 2px;
+}
+
+.toolboxentry{
+    min-width: 10vh;
+    height: 10vh;
+    outline: slategrey solid 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.selected_tool{
+    font-weight: bold;
+}
+
+#moveoverlay{
+    border: solid 2px gray;
+    cursor: grab;
+}
+
+#auxoverlay {
+    border: solid 2px royalblue;
+    cursor: grab;
+}
+
+a{
+    text-decoration: none;
+    color: cadetblue;
+}
